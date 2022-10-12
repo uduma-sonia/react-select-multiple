@@ -13,6 +13,8 @@ interface InputProps {
   onChange?: (arg: string[]) => void
   tagIcon?: React.ReactElement
   type?: string
+  tagBackgroundColor?: string
+  tagTextColor?: string
 }
 
 export default function TextCombo({
@@ -27,6 +29,8 @@ export default function TextCombo({
   onChange,
   tagIcon,
   type = 'text',
+  tagBackgroundColor,
+  tagTextColor,
 }: InputProps) {
   const [selectedInput, setSelectedInput] = useState<string[]>([])
 
@@ -86,9 +90,11 @@ export default function TextCombo({
       <div className={`rselect_multiple_tag_container`}>
         {selectedInput.map((item: string | number) => {
           return (
-            <div className={`rselect_tag`} key={item}>
-              <p className={`rselect_tag_text`}>{item}</p>
-              <button className={`rselect_tag_remove_button`} onClick={() => handleRemoveInput(item)}>
+            <div className={`rinput_tag`} key={item} style={{ backgroundColor: tagBackgroundColor }}>
+              <p className={`rinput_tag_text`} style={{ color: tagTextColor }}>
+                {item}
+              </p>
+              <button className={`rinput_tag_remove_button`} onClick={() => handleRemoveInput(item)}>
                 {tagIcon ?? <ClearButton />}
               </button>
             </div>

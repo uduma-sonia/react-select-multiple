@@ -5,7 +5,8 @@
   margin-bottom: 2rem;
 }
 
-.rselect_multiple_tag_container .rselect_tag {
+.rselect_multiple_tag_container .rselect_tag,
+.rselect_multiple_tag_container .rinput_tag {
   cursor: default;
   font-size: 16px;
   display: flex;
@@ -17,6 +18,9 @@
 }
 
 .rselect_multiple_tag_container .rselect_tag .rselect_tag_text {
+  margin: 0px;
+}
+.rselect_multiple_tag_container .rinput_tag .rinput_tag_text {
   margin: 0px;
 }
 
@@ -32,6 +36,21 @@
 }
 
 .rselect_multiple_tag_container .rselect_tag_remove_button:hover {
+  background-color: rgb(246, 194, 194);
+}
+
+.rselect_multiple_tag_container .rinput_tag_remove_button {
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.rselect_multiple_tag_container .rinput_tag_remove_button:hover {
   background-color: rgb(246, 194, 194);
 }
 
