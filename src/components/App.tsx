@@ -1,4 +1,6 @@
-import React, { useState, ReactNode } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, ReactNode, useEffect } from 'react'
+import './style.css'
 
 interface SelectComboProps {
   children?: ReactNode
@@ -7,21 +9,35 @@ interface SelectComboProps {
   required?: boolean
   disabled?: boolean
   id?: string
-  autoComplete?: boolean
+  autoComplete?: string
   autoFocus?: boolean
   maxNumber?: number
+  onChange?: (arg: string[]) => void
+  tagIcon?: React.ReactElement
+  tagContainerClass?: string
+  tagClass?: string
+  tagTextClass?: string
+  tagRemoveClass?: string
+  selectClass?: string
 }
 
 export default function SelectCombo({
   children,
   placeholder,
   name,
-  required,
-  disabled,
+  required = false,
+  disabled = false,
   id,
   autoComplete,
-  autoFocus,
+  autoFocus = false,
   maxNumber,
+  onChange,
+  tagIcon,
+  tagContainerClass,
+  tagClass,
+  tagTextClass,
+  tagRemoveClass,
+  selectClass,
 }: SelectComboProps) {
   const [selectedOptions, setSelectedOptions] = useState<any>([])
 
@@ -51,20 +67,29 @@ export default function SelectCombo({
     }
   }
 
+  useEffect(() => {
+    if (selectedOptions) {
+      onChange?.(selectedOptions)
+    }
+  }, [selectedOptions])
+
   const handleRemoveOptions = (value: string | number) => {
     const modifiedArr = selectedOptions.filter((item: any) => item !== value)
     setSelectedOptions(modifiedArr)
   }
 
   return (
-    <div className='combo_container'>
-      <div>
+    <div className='react_select_several'>
+      <div className={`rselect_multiple_tag_container ${tagContainerClass}`}>
         {selectedOptions.map((item: string | number) => {
           return (
-            <div className='tag_button' key={item}>
-              {item}
-              <button className='tag_clear_button' onClick={() => handleRemoveOptions(item)}>
-                <ClearButton />
+            <div className={`rselect_tag ${tagClass}`} key={item}>
+              <p className={`rselect_tag_text ${tagTextClass}`}>{item}</p>
+              <button
+                className={`rselect_tag_remove_button ${tagRemoveClass}`}
+                onClick={() => handleRemoveOptions(item)}
+              >
+                {tagIcon ?? <ClearButton />}
               </button>
             </div>
           )
@@ -74,6 +99,13 @@ export default function SelectCombo({
       <select
         onChange={(e: React.FormEvent<HTMLSelectElement>) => handleSelect(e.currentTarget.value)}
         defaultValue='DEFAULT'
+        name={name}
+        disabled={disabled}
+        required={required}
+        id={id}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
+        className={`rselect_select ${selectClass}`}
       >
         <option value='DEFAULT' disabled>
           {placeholder ?? 'Select options'}
@@ -86,10 +118,10 @@ export default function SelectCombo({
 
 const ClearButton = () => {
   return (
-    <svg width='20' height='20' xmlns='http://www.w3.org/2000/svg' version='1.1'>
-      <g stroke='#000' strokeWidth='2'>
-        <line x1='5' y1='5' x2='15' y2='15' />
-        <line x1='5' y1='15' x2='15' y2='5' />
+    <svg width='18' height='18' xmlns='http://www.w3.org/2000/svg' version='1.1'>
+      <g stroke='#4a4949' strokeWidth='2'>
+        <line x1='4' y1='4' x2='14' y2='14' />
+        <line x1='4' y1='14' x2='14' y2='4' />
       </g>
     </svg>
   )
