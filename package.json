@@ -1,5 +1,5 @@
 {
-  "name": "select-multiple",
+  "name": "react-select-several",
   "version": "1.0.0",
   "description": "a react select pakage that enables users to select mutlitple options",
   "main": "./dist/cjs/index.js",
