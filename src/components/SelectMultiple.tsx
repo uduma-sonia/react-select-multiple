@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, ReactNode, useEffect } from 'react'
-import './style.css'
+import React, { useState, ReactNode, useEffect, useCallback } from 'react'
 
 interface SelectComboProps {
   children?: ReactNode
@@ -21,7 +19,7 @@ interface SelectComboProps {
   selectClass?: string
 }
 
-export default function SelectCombo({
+export default function SelectMultiple({
   children,
   placeholder,
   name,
@@ -41,10 +39,21 @@ export default function SelectCombo({
 }: SelectComboProps) {
   const [selectedOptions, setSelectedOptions] = useState<any>([])
 
-  const handleSelect = (value: string | number) => {
-    if (maxNumber) {
-      if (selectedOptions.length >= maxNumber) {
-        setSelectedOptions(selectedOptions)
+  const handleSelect = useCallback(
+    (value: string | number) => {
+      if (maxNumber) {
+        if (selectedOptions.length >= maxNumber) {
+          setSelectedOptions(selectedOptions)
+        } else {
+          setSelectedOptions((prev: any) => {
+            const isOptionSelected = prev.find((item: any) => item === value)
+            if (!isOptionSelected) {
+              return [...prev, value]
+            } else {
+              return [...prev]
+            }
+          })
+        }
       } else {
         setSelectedOptions((prev: any) => {
           const isOptionSelected = prev.find((item: any) => item === value)
@@ -55,22 +64,15 @@ export default function SelectCombo({
           }
         })
       }
-    } else {
-      setSelectedOptions((prev: any) => {
-        const isOptionSelected = prev.find((item: any) => item === value)
-        if (!isOptionSelected) {
-          return [...prev, value]
-        } else {
-          return [...prev]
-        }
-      })
-    }
-  }
+    },
+    [maxNumber, selectedOptions],
+  )
 
   useEffect(() => {
     if (selectedOptions) {
       onChange?.(selectedOptions)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOptions])
 
   const handleRemoveOptions = (value: string | number) => {
@@ -116,7 +118,7 @@ export default function SelectCombo({
   )
 }
 
-const ClearButton = () => {
+export const ClearButton = () => {
   return (
     <svg width='18' height='18' xmlns='http://www.w3.org/2000/svg' version='1.1'>
       <g stroke='#4a4949' strokeWidth='2'>
