@@ -1,7 +1,8 @@
 {
   "name": "react-select-several",
   "version": "1.0.0",
-  "description": "a react select pakage that enables users to select mutlitple options",
+  "description": "Customizable React select and input field that allows users to select and enter multiple options.",
+  "repository": "https://github.com/uduma-sonia/react-select-several",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -15,15 +16,17 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run prettier && npm run lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uduma-sonia/react-select-multiple.git"
-  },
   "keywords": [
     "react",
     "typescript",
     "select",
-    "dropdown"
+    "dropdown",
+    "input",
+    "react-component",
+    "react-select",
+    "react-select-multi",
+    "react-select-multiple",
+    "react-input-multiple"
   ],
   "author": {
     "name": "Sonia Uduma",
