@@ -1,5 +1,6 @@
 import React, { useState, KeyboardEvent, useEffect, useCallback } from 'react'
 import { ClearButton } from './SelectMultiple'
+import './styles.css'
 
 interface InputProps {
   placeholder?: string

@@ -1,4 +1,6 @@
-import React, { useState, ReactNode, useEffect, useCallback } from 'react'
+import * as React from 'react'
+import './styles.css'
+import { useState, ReactNode, useEffect, useCallback } from 'react'
 
 interface SelectComboProps {
   children?: ReactNode
