@@ -15,6 +15,11 @@ interface InputProps {
   type?: string
   tagBackgroundColor?: string
   tagTextColor?: string
+  tagContainerClass?: string
+  inputTagClass?: string
+  inputTagTextClass?: string
+  inputTagIconClass?: string
+  inputClass?: string
 }
 
 export default function TextCombo({
@@ -31,6 +36,12 @@ export default function TextCombo({
   type = 'text',
   tagBackgroundColor,
   tagTextColor,
+  tagContainerClass,
+
+  inputTagClass,
+  inputTagTextClass,
+  inputTagIconClass,
+  inputClass,
 }: InputProps) {
   const [selectedInput, setSelectedInput] = useState<string[]>([])
 
@@ -87,14 +98,17 @@ export default function TextCombo({
 
   return (
     <div className='react_select_several'>
-      <div className={`rselect_multiple_tag_container`}>
+      <div className={`rselect_multiple_tag_container ${tagContainerClass}`}>
         {selectedInput.map((item: string | number) => {
           return (
-            <div className={`rinput_tag`} key={item} style={{ backgroundColor: tagBackgroundColor }}>
-              <p className={`rinput_tag_text`} style={{ color: tagTextColor }}>
+            <div className={`rselect_tag ${inputTagClass}`} key={item} style={{ backgroundColor: tagBackgroundColor }}>
+              <p className={`rselect_tag_text ${inputTagTextClass}`} style={{ color: tagTextColor }}>
                 {item}
               </p>
-              <button className={`rinput_tag_remove_button`} onClick={() => handleRemoveInput(item)}>
+              <button
+                className={`rselect_tag_remove_button ${inputTagIconClass}`}
+                onClick={() => handleRemoveInput(item)}
+              >
                 {tagIcon ?? <ClearButton />}
               </button>
             </div>
@@ -104,7 +118,7 @@ export default function TextCombo({
 
       <div>
         <input
-          className='rselect_input'
+          className={`rselect_input ${inputClass}`}
           placeholder={placeholder}
           name={name}
           disabled={disabled}

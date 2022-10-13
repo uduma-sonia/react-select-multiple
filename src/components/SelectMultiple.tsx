@@ -13,13 +13,15 @@ interface SelectComboProps {
   onChange?: (arg: string[]) => void
   tagIcon?: React.ReactElement
   tagContainerClass?: string
-  tagClass?: string
-  tagTextClass?: string
-  tagRemoveClass?: string
+  tagBackgroundColor?: string
+  tagTextColor?: string
+  selectTagClass?: string
+  selectTagTextClass?: string
+  selectTagIconClass?: string
   selectClass?: string
 }
 
-export default function SelectMultiple({
+export default function SelectCombo({
   children,
   placeholder,
   name,
@@ -32,9 +34,11 @@ export default function SelectMultiple({
   onChange,
   tagIcon,
   tagContainerClass,
-  tagClass,
-  tagTextClass,
-  tagRemoveClass,
+  tagBackgroundColor,
+  tagTextColor,
+  selectTagClass,
+  selectTagTextClass,
+  selectTagIconClass,
   selectClass,
 }: SelectComboProps) {
   const [selectedOptions, setSelectedOptions] = useState<any>([])
@@ -85,10 +89,12 @@ export default function SelectMultiple({
       <div className={`rselect_multiple_tag_container ${tagContainerClass}`}>
         {selectedOptions.map((item: string | number) => {
           return (
-            <div className={`rselect_tag ${tagClass}`} key={item}>
-              <p className={`rselect_tag_text ${tagTextClass}`}>{item}</p>
+            <div className={`rselect_tag ${selectTagClass}`} key={item} style={{ backgroundColor: tagBackgroundColor }}>
+              <p className={`rselect_tag_text ${selectTagTextClass}`} style={{ color: tagTextColor }}>
+                {item}
+              </p>
               <button
-                className={`rselect_tag_remove_button ${tagRemoveClass}`}
+                className={`rselect_tag_remove_button ${selectTagIconClass}`}
                 onClick={() => handleRemoveOptions(item)}
               >
                 {tagIcon ?? <ClearButton />}
@@ -112,7 +118,7 @@ export default function SelectMultiple({
         <option value='DEFAULT' disabled>
           {placeholder ?? 'Select options'}
         </option>
-        {children ?? <option>No options</option>}
+        {children}
       </select>
     </div>
   )
