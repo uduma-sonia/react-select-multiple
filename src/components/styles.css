@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 .rselect_multiple_tag_container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.8rem;
 }
 
 .rselect_multiple_tag_container .rselect_tag {
@@ -43,11 +49,6 @@
   cursor: pointer;
   outline: none;
   border: 1px solid gray;
-}
-
-.rselect_select {
-  padding: 10px;
-  padding-right: 30px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -55,6 +56,7 @@
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
+  padding: 0px 10px;
 }
 
 .rselect_select::-ms-expand {
@@ -68,6 +70,5 @@
   outline: none;
   border: 1px solid gray;
   font-size: 16px;
-  padding: 10px;
-  padding-right: 30px;
+  padding: 0px 10px;
 }

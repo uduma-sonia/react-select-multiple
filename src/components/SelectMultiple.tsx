@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState, ReactNode, useEffect, useCallback } from 'react'
 import './styles.css'
 
-interface SelectComboProps {
+interface SelectMultipleProps {
   children?: ReactNode
   placeholder?: string
   name?: string
@@ -23,7 +23,7 @@ interface SelectComboProps {
   selectClass?: string
 }
 
-export default function SelectCombo({
+export default function SelectMultiple({
   children,
   placeholder,
   name,
@@ -42,7 +42,7 @@ export default function SelectCombo({
   selectTagTextClass,
   selectTagIconClass,
   selectClass,
-}: SelectComboProps) {
+}: SelectMultipleProps) {
   const [selectedOptions, setSelectedOptions] = useState<any>([])
 
   const handleSelect = useCallback(

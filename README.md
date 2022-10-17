@@ -36,6 +36,10 @@ $ npm i react-select-several
 <br/>
 <br/>
 
+## Examples
+
+[codesandbox](https://codesandbox.io/s/react-select-several-517mpe?file=/src/App.js)
+
 ## Basic Usage
 
 For select field

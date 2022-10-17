@@ -2,7 +2,7 @@ import React, { useState, KeyboardEvent, useEffect, useCallback } from 'react'
 import { ClearButton } from './SelectMultiple'
 import './styles.css'
 
-interface InputProps {
+interface InputMultipleProps {
   placeholder?: string
   name?: string
   required?: boolean
@@ -23,7 +23,7 @@ interface InputProps {
   inputClass?: string
 }
 
-export default function TextCombo({
+export default function InputMultiple({
   placeholder = 'Type and enter',
   name,
   required = false,
@@ -38,12 +38,11 @@ export default function TextCombo({
   tagBackgroundColor,
   tagTextColor,
   tagContainerClass,
-
   inputTagClass,
   inputTagTextClass,
   inputTagIconClass,
   inputClass,
-}: InputProps) {
+}: InputMultipleProps) {
   const [selectedInput, setSelectedInput] = useState<string[]>([])
 
   const handleSelect = useCallback(

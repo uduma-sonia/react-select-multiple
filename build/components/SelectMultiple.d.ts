@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import './styles.css';
-interface SelectComboProps {
+interface SelectMultipleProps {
     children?: ReactNode;
     placeholder?: string;
     name?: string;
@@ -21,6 +21,6 @@ interface SelectComboProps {
     selectTagIconClass?: string;
     selectClass?: string;
 }
-export default function SelectCombo({ children, placeholder, name, required, disabled, id, autoComplete, autoFocus, maxNumber, onChange, tagIcon, tagContainerClass, tagBackgroundColor, tagTextColor, selectTagClass, selectTagTextClass, selectTagIconClass, selectClass, }: SelectComboProps): JSX.Element;
+export default function SelectMultiple({ children, placeholder, name, required, disabled, id, autoComplete, autoFocus, maxNumber, onChange, tagIcon, tagContainerClass, tagBackgroundColor, tagTextColor, selectTagClass, selectTagTextClass, selectTagIconClass, selectClass, }: SelectMultipleProps): JSX.Element;
 export declare const ClearButton: () => JSX.Element;
 export {};

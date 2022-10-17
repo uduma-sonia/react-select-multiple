@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-interface InputProps {
+interface InputMultipleProps {
     placeholder?: string;
     name?: string;
     required?: boolean;
@@ -20,5 +20,5 @@ interface InputProps {
     inputTagIconClass?: string;
     inputClass?: string;
 }
-export default function TextCombo({ placeholder, name, required, disabled, id, autoComplete, autoFocus, maxNumber, onChange, tagIcon, type, tagBackgroundColor, tagTextColor, tagContainerClass, inputTagClass, inputTagTextClass, inputTagIconClass, inputClass, }: InputProps): JSX.Element;
+export default function InputMultiple({ placeholder, name, required, disabled, id, autoComplete, autoFocus, maxNumber, onChange, tagIcon, type, tagBackgroundColor, tagTextColor, tagContainerClass, inputTagClass, inputTagTextClass, inputTagIconClass, inputClass, }: InputMultipleProps): JSX.Element;
 export {};

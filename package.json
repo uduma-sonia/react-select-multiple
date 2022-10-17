@@ -1,6 +1,6 @@
 {
   "name": "react-select-several",
-  "version": "1.2.12",
+  "version": "1.2.14",
   "description": "Customizable select and input field for React that enables users to select and input multiple options.",
   "repository": "https://github.com/uduma-sonia/react-select-several",
   "main": "build/index.js",
