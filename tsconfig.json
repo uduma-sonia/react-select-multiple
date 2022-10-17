@@ -1,29 +1,21 @@
 {
-    "include": ["src"],
-    "exclude": [
-      "dist",
-      "node_modules"
-    ],
-    "compilerOptions": {
-      "module": "esnext",
-      // "lib": ["dom", "esnext"],
-      "lib": ["es6", "dom", "es2016", "es2017"],
-      "baseUrl": ".",
-      "importHelpers": true,
-      "target": "ES6",
-      "declaration": true,
-      "sourceMap": true,
-      "rootDir": "./src",
-      "outDir": "./dist/esm",
-      "strict": true,
-      "noImplicitReturns": true,
-      "noFallthroughCasesInSwitch": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "moduleResolution": "node",
-      "jsx": "react",
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-    }
-  }
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "build",
+    "module": "esnext",
+    "target": "ES6",
+    "lib": ["es6", "dom", "es2016", "es2017"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx"
+  ]
+}

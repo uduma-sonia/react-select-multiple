@@ -1,15 +1,15 @@
 {
   "name": "react-select-several",
-  "version": "1.2.3",
+  "version": "1.2.12",
   "description": "Customizable select and input field for React that enables users to select and input multiple options.",
   "repository": "https://github.com/uduma-sonia/react-select-several",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "build": "rollup -c",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src/src}/**/*.{js,ts,jsx,tsx}\""
   },
@@ -32,11 +32,10 @@
   "peerDependencies": {
     "react": ">=16"
   },
-  "files": [
-    "dist"
-  ],
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
     "@types/react": "^18.0.21",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
@@ -46,9 +45,15 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "identity-obj-proxy": "^3.0.0",
+    "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^4.8.4"
-  }
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^4.8.4",
+    "typescript-plugin-css-modules": "^3.4.0"
+  },
+  "dependencies": {}
 }
